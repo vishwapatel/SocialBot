@@ -176,6 +176,13 @@ def post_status():
 	"""
 		Method called for scheduling facebook statuses
 	"""
+
+	if len(request.form['message']) == 0:
+		return render_template('post_status.html', message = "Error: Status cannot be empty")
+
+	if len(request.form['time']) == 0:
+		return render_template('post_status.html', message = "Error: You haven't entered a scheduled time!")
+
 	item = domain.new_item(uuid.uuid4())
 	item_iterator = domain.select("select * from socialbot where user_id = '" + session['facebook_user'] + "'")
 	item['user_id'] = session['facebook_user']
@@ -211,7 +218,7 @@ def post_tweet():
 		return render_template('post_tweet.html', message = "Error: Tweet length should be less than 140 and greater than 0")
 
 	if len(request.form['time']) == 0:
-		return render_template('post_tweet.html', message = "You haven't entered a scheduled time!")
+		return render_template('post_tweet.html', message = "Error: You haven't entered a scheduled time!")
 
 	item = domain.new_item(uuid.uuid4())
 	item['user_id'] = session['twitter_user']
