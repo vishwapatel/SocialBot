@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h3>{{message}}</h3>
+  </br>
+  </br>
+    <form action="/post_status" method="POST" class="post-update">
+       <fieldset>
+        <div class="control-group">
+            <textarea class="input-xlarge" name="message" rows="3">Hello from SocialBot!</textarea>
+        </div>
+
+        <div id="datetimepicker" class="input-append date">
+          <input type="text" name="time"></input>
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large"><i class="icon-share icon-white"></i> Schedule Status</button>
+        </fieldset>
+    </form>
+  </br>
+  </br>
+  {% for m, t, time in db %}
+    <form action="/edit_status" method="POST" class="post-update">
+      <input type="hidden" name="oldmessage" value={{ m }}>
+      <input type="hidden" name="t" value={{ t }}>
+      <textarea class="input-xlarge" name="editmessage" rows="3">{{ m }}</textarea>
+      <h5>{{ time }}</h5>
+      <fieldset>
+        <button type="submit" class="btn btn-primary btn-small" name="action" value="edit"><i class="icon-share icon-white"></i>Edit</button>
+        <button type="submit" class="btn btn-primary btn-small" name="action" value="delete"><i class="icon-share icon-white"></i>Delete</button>
+      </fieldset>
+    </form>
+  {% endfor %}
+{% endblock %}

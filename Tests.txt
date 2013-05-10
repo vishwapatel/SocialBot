@@ -1,0 +1,32 @@
+Tests:
+1 - Sign into facebook using the small button on the top right.
+Click on the connect with facebook button. It should redirect to
+the post status page with the default message in the text area.
+Enter a test message different from the default and select a time within the next two minutes.
+Post.
+
+Expected result: The posted message should show up underneath the text area on the same page
+in a new text area with edit and delete buttons. Within ten minutes the post should be on facebook.
+
+2 - Continuing from the same page, keep adding posts. Each post should show up under the text area for a new
+status.
+
+3 - On the same page, change one of the posts already scheduled. Click on edit. The page should refresh
+and the text field you edited should remain edited.
+
+Expected Result: The scheduled post should be the edited version, not the original version.
+
+4 - Press the delete button next to a scheduled post. It should not ever post and should disappear from the list.
+
+5 - Schedule several posts as above, only at half hour intervals.
+
+Expected result: They should post in later 10 minute cycles.
+
+6 - Perform the same tests above with twitter.
+
+7 - Try tweeting something longer than 140 characters. It should give you an error message.
+
+8 - Logout and login again. Then try posting a tweet or post again. All scheduled posts not already posted should
+still be visible and editable.
+
+9 - Try scheduling a Facebook post or tweet without entering a time, an error message should be displayed on the page.
